@@ -13,4 +13,4 @@ Add to your `Gemfile`:
 
 ## License
 
-see [LICENSE]
+see [LICENSE](LICENSE)

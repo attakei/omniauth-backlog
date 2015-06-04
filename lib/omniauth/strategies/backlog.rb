@@ -35,6 +35,18 @@ module OmniAuth
         params
       end
 
+      uid{ raw_info['userId'] }
+
+      info do
+        {
+          :name => raw_info['name'],
+          :email => raw_info['mailAddress']
+        }
+      end
+
+      def raw_info
+        @raw_info ||= access_token.get('/api/v2/users/myself').parsed
+      end
     end
   end
 end

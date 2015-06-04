@@ -1,11 +1,11 @@
-require 'omniauth-oauth'
+require 'omniauth-oauth2'
 require 'cgi'
 
 
 module OmniAuth
   module Strategies
-    class Backlog < OmniAuth::Strategies::OAuth
-      args [:space, :consumer_key, :consumer_secret]
+    class Backlog < OmniAuth::Strategies::OAuth2
+      args [:space, :client_id, :client_secret]
 
       option :name, 'backlog'
 
@@ -15,19 +15,25 @@ module OmniAuth
         :response_type => 'code',
 
       }
+      option :client_options, {
+        # :authorize_path => '/api/v2/oauth2/token',
+        :authorize_url => '/OAuth2AccessRequest.action',
+        :proxy => ENV['http_proxy'] ? URI(ENV['http_proxy']) : nil
+      }
 
-      def site_domain
-        options.space + '.backlog.jp'
+      def client
+        ::OAuth2::Client.new(options.client_id, options.client_secret, deep_symbolize(client_options))
       end
 
-      def request_phase
-        endpoint_url = '/OAuth2AccessRequest.action'
-        query_hash = {:redirect_url => callback_url, :client_id => options.consumer_key}.merge(options.authorize_params)
-        query_string = (query_hash||{}).map{|k,v|
-          CGI::escape(k.to_s) + "=" + CGI::escape(v.to_s)
-        }.join("&")
-        redirect 'https://' + site_domain + endpoint_url + '?' + query_string
+      def client_options
+        params = {
+          :site => 'https://' + options.space + '.backlog.jp',
+          :authorize_path => '/OAuth2AccessRequest.action',
+        }
+        params = params.merge(options.client_options)
+        params
       end
+
     end
   end
 end

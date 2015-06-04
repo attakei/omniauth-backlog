@@ -18,6 +18,7 @@ module OmniAuth
       option :client_options, {
         # :authorize_path => '/api/v2/oauth2/token',
         :authorize_url => '/OAuth2AccessRequest.action',
+        :token_url => '/api/v2/oauth2/token',
         :proxy => ENV['http_proxy'] ? URI(ENV['http_proxy']) : nil
       }
 

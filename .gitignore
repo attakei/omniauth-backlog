@@ -32,4 +32,5 @@ Gemfile.lock
 /pkg/
 /spec/reports/
 /tmp/
+*.gem
 

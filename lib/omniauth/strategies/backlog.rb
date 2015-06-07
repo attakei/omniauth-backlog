@@ -8,8 +8,8 @@ module OmniAuth
 
       option :authorize_params, {
         :response_type => 'code',
-
       }
+
       option :client_options, {
         :authorize_url => '/OAuth2AccessRequest.action',
         :token_url => '/api/v2/oauth2/token',

@@ -26,7 +26,10 @@ Backlog's oauth endpoint uses space url. so it need to configure site in client_
 
 ```ruby
 use OmniAuth::Builder do
- provider :backlog, ENV['CLIENT_ID'], ENV['CLIENT_SERCRET'], :client_options => { :site => 'https://yourspaceid.backlog.jp' }
+    provider :backlog, ENV['CLIENT_ID'], ENV['CLIENT_SERCRET'], 
+    :client_options => {
+        :site => 'https://yourspaceid.backlog.jp'
+    }
 end
 ```
 

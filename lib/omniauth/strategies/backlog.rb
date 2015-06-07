@@ -4,7 +4,7 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Backlog < OmniAuth::Strategies::OAuth2
-      args [:space, :client_id, :client_secret]
+      args [:client_id, :client_secret]
 
       option :name, 'backlog'
 
@@ -26,7 +26,7 @@ module OmniAuth
 
       def client_options
         params = {
-          :site => 'https://' + options.space + '.backlog.jp',
+          # :site => 'https://' + options.space + '.backlog.jp',
           :authorize_path => '/OAuth2AccessRequest.action',
         }
         params = params.merge(options.client_options)

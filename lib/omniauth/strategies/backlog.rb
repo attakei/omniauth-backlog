@@ -20,19 +20,6 @@ module OmniAuth
         :proxy => ENV['http_proxy'] ? URI(ENV['http_proxy']) : nil
       }
 
-      def client
-        ::OAuth2::Client.new(options.client_id, options.client_secret, deep_symbolize(client_options))
-      end
-
-      def client_options
-        params = {
-          # :site => 'https://' + options.space + '.backlog.jp',
-          :authorize_path => '/OAuth2AccessRequest.action',
-        }
-        params = params.merge(options.client_options)
-        params
-      end
-
       uid{ raw_info['userId'] }
 
       info do

@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-Backlog is managed by space-id, used backlog url. (ex. https://xxxx.backlog.jp)
+Backlog is managed by space-id, used backlog url (ex. https://xxxx.backlog.jp).
 Backlog's oauth endpoint uses space url. so it need to configure site in client_options.
 
 ```ruby
@@ -33,8 +33,13 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/omniauth-backlog. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/attakei/omniauth-backlog.
 
+0. Fork it
+0. Create your feature branch (git checkout -b my-new-feature)
+0. Commit your changes (git commit -am 'Add some feature')
+0. Push to the branch (git push origin my-new-feature)
+0. Create new Pull Request
 
 ## License
 

@@ -4,11 +4,7 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Backlog < OmniAuth::Strategies::OAuth2
-      args [:client_id, :client_secret]
-
       option :name, 'backlog'
-
-      option :space, nil
 
       option :authorize_params, {
         :response_type => 'code',

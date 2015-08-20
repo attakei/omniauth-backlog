@@ -2,6 +2,7 @@
 
 This is omniauth strategy for authenticating to your Backlog service used OAuth 2.0 style.
 
+Backlog is project management tools served by Nulab Inc.
 
 ## Installation
 

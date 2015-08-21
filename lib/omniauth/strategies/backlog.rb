@@ -16,6 +16,14 @@ module OmniAuth
         :proxy => ENV['http_proxy'] ? URI(ENV['http_proxy']) : nil
       }
 
+      def deep_symbolize(options)
+        hash = super(options)
+        if ! hash.has_key?(:site)
+          hash[:site] = 'https://yourspaceid.backlog.jp'
+        end
+        hash
+      end
+
       uid{ raw_info['userId'] }
 
       info do

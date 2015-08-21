@@ -1,6 +1,7 @@
 require 'test_helper'
 
-class TestOmniAuthBacklog < StrategyTestCase
+
+class TestOmniAuthBacklogWithSiteId < StrategyTestCase
 
   def test_site_is_based_from_space_id
     @options = {
@@ -8,6 +9,11 @@ class TestOmniAuthBacklog < StrategyTestCase
     }
     assert_equal 'https://yourspaceid.backlog.jp', strategy.client.site
   end
+
+end
+
+
+class TestOmniAuthBacklogWithSite < StrategyTestCase
 
   def test_it_has_the_correct_site_from_options
     @options = {

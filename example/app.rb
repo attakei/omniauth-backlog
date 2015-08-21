@@ -13,7 +13,11 @@ end
 
 use Rack::Session::Cookie
 use OmniAuth::Builder do
-  provider :backlog, ENV['CLIENT_ID'], ENV['CLIENT_SERCRET'], :client_options => { :site => ENV['CLIENT_ENDPOINT'] }
+  provider
+    :backlog,
+    ENV['CLIENT_ID'],
+    ENV['CLIENT_SERCRET'],
+    :space_id => 'xxx'
 end
 
 

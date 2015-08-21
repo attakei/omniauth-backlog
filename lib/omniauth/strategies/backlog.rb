@@ -6,6 +6,8 @@ module OmniAuth
     class Backlog < OmniAuth::Strategies::OAuth2
       option :name, 'backlog'
 
+      option :space_id, nil
+
       option :authorize_params, {
         :response_type => 'code',
       }
@@ -19,7 +21,10 @@ module OmniAuth
       def deep_symbolize(options)
         hash = super(options)
         if ! hash.has_key?(:site)
-          hash[:site] = 'https://yourspaceid.backlog.jp'
+          if self.options.space_id == nil
+            raise 'Backlog space is missing.'
+          end
+          hash[:site] = 'https://' + self.options.space_id + '.backlog.jp'
         end
         hash
       end

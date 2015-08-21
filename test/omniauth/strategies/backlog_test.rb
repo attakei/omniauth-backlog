@@ -9,7 +9,7 @@ class TestOmniAuthBacklog < StrategyTestCase
     assert_equal 'https://yourspaceid.backlog.jp', strategy.client.site
   end
 
-  def test_it_has_the_correct_site
+  def test_it_has_the_correct_site_from_options
     @options = {
         :client_options => {
             :site => 'https://yourspaceid.backlog.jp'
@@ -18,7 +18,7 @@ class TestOmniAuthBacklog < StrategyTestCase
     assert_equal 'https://yourspaceid.backlog.jp', strategy.client.site
   end
 
-  def test_it_has_the_correct_authorize_url
+  def test_it_has_the_correct_authorize_url_with_site_from_options
     @options = {
         :client_options => {
             :site => 'https://yourspaceid.backlog.jp'
@@ -27,7 +27,7 @@ class TestOmniAuthBacklog < StrategyTestCase
     assert_equal 'https://yourspaceid.backlog.jp/OAuth2AccessRequest.action', strategy.client.authorize_url
   end
 
-  def test_it_has_the_correct_token_url
+  def test_it_has_the_correct_token_url_with_site_from_options
     @options = {
         :client_options => {
             :site => 'https://yourspaceid.backlog.jp'

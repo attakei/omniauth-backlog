@@ -5,14 +5,21 @@ class TestOmniAuthBacklogWithSiteId < StrategyTestCase
   def setup
     super
     @options = {
-        :site_id => 'yourspaceid'
+        :space_id => 'testspace'
     }
   end
 
   def test_site_is_based_from_space_id
-    assert_equal 'https://yourspaceid.backlog.jp', strategy.client.site
+    assert_equal 'https://testspace.backlog.jp', strategy.client.site
   end
 
+  def test_raise_error_if_it_not_set_site_and_space_id
+    assert_raises RuntimeError do
+      @options = {
+      }
+      strategy.client
+    end
+  end
 end
 
 

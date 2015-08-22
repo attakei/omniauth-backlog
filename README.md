@@ -24,13 +24,23 @@ Or install it yourself as:
 ## Usage
 
 Backlog is managed by space-id, used backlog url (ex. https://xxxx.backlog.jp).
-Backlog's oauth endpoint uses space url. so it need to configure site in client_options.
+Backlog's oauth endpoint uses space url. so it need to configure space-id.
+
 
 ```ruby
 use OmniAuth::Builder do
-    provider :backlog, ENV['CLIENT_ID'], ENV['CLIENT_SERCRET'], 
+    provider :backlog, ENV['CLIENT_ID'], ENV['CLIENT_SERCRET'],
+      :space_id => 'yourspaceid'
+end
+```
+
+It can set site-url directly.
+
+```ruby
+use OmniAuth::Builder do
+  provider :backlog, ENV['CLIENT_ID'], ENV['CLIENT_SERCRET'],
     :client_options => {
-        :site => 'https://yourspaceid.backlog.jp'
+      :site => 'https://yourspaceid.backlog.jp'
     }
 end
 ```

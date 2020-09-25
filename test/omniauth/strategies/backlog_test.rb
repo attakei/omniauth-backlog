@@ -58,6 +58,25 @@ class TestOmniAuthBacklogWithSessions < StrategyTestCase
   end
 end
 
+class TestOmniAuthBacklogWithSessions < StrategyTestCase
+  def setup
+    super
+    @request = stub(session: { 'backlog_space_host' => 'testsession.backlog.jp'}, params: {})
+  end
+
+  def test_site_is_based_from_space_id
+    assert_equal 'https://testsession.backlog.jp', strategy.client.site
+  end
+
+  def test_it_has_the_correct_authorize_url_with_site_from_options
+    assert_equal 'https://testsession.backlog.jp/OAuth2AccessRequest.action', strategy.client.authorize_url
+  end
+
+  def test_it_has_the_correct_token_url_with_site_from_options
+    assert_equal 'https://testsession.backlog.jp/api/v2/oauth2/token', strategy.client.token_url
+  end
+end
+
 class TestOmniAuthBacklogWithSite < StrategyTestCase
   def setup
     super

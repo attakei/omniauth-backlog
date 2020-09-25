@@ -23,11 +23,15 @@ module OmniAuth
 
       def add_dynamic_site(hash)
         unless hash.key?(:site)
-          space_id = options.space_id || request_space_id
+          if request_site
+            hash[:site] = "https://#{request_site}"
+          else
+            space_id = options.space_id || request_space_id
 
-          raise 'Backlog space is missing.' if space_id.nil?
+            raise 'Backlog space is missing.' if space_id.nil?
 
-          hash[:site] = 'https://' + space_id + '.backlog.com'
+            hash[:site] = "https://#{space_id}.backlog.com"
+          end
         end
         hash
       end
@@ -37,6 +41,13 @@ module OmniAuth
         request.session['backlog_space_id'] = space_id if space_id
 
         space_id
+      end
+
+      def request_site
+        site = request.session['backlog_space_host'] || request.params['backlog_space_host']
+        request.session['backlog_space_host'] = site if site
+
+        site
       end
 
       # cf: https://qiita.com/kato2222/items/cf70def83129116942be

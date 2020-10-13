@@ -37,14 +37,14 @@ module OmniAuth
       end
 
       def request_space_id
-        space_id = request.session['backlog_space_id'] || request.params['backlog_space_id']
+        space_id = request.params['backlog_space_id'] || request.session['backlog_space_id']
         request.session['backlog_space_id'] = space_id if space_id
 
         space_id
       end
 
       def request_site
-        site = request.session['backlog_space_host'] || request.params['backlog_space_host']
+        site = request.params['backlog_space_host'] || request.session['backlog_space_host']
         request.session['backlog_space_host'] = site if site
 
         site
